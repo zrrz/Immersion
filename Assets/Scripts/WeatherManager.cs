@@ -3,11 +3,13 @@ using System.Collections;
 
 public class WeatherManager : MonoBehaviour {
 
-	enum Weather {
+	static WeatherManager s_instance;
+
+	public enum Weather {
 		SNOW, SUN, RAIN, SIZE
 	}
 
-	Weather weather;
+	Weather m_weather;
 
 	public GameObject player;
 
@@ -22,11 +24,12 @@ public class WeatherManager : MonoBehaviour {
 
 	public Material snowMat;
 
-	public AudioClip rainSound;
+	public AudioClip rainSound; 
 
 	void Start () {
+		s_instance = this;
 		audio.Stop();
-		weather = (Weather)Random.Range (0, (int)Weather.SIZE);
+		m_weather = (Weather)Random.Range (0, (int)Weather.SIZE);
 
 		switch (weather) {
 		case Weather.SUN:
@@ -56,6 +59,18 @@ public class WeatherManager : MonoBehaviour {
 		default:
 			print("Weather not implemented");
 			break;
+		}
+	}
+
+	public static WeatherManager instance {
+		get {
+			return s_instance;
+		}
+	}
+
+	public Weather weather {
+		get {
+			return m_weather;
 		}
 	}
 }
