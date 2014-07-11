@@ -27,10 +27,10 @@ public class Dialog : MonoBehaviour {
 
 	void Update () {
 		playerNear = Vector3.Distance(player.position, transform.position) < talkDistance;
-		if(!UDP_RecoServer.Get().wordUsed) {
-			if(UDP_RecoServer.Get().UDPGetPacket() == "Yes") {
+		if(!UDP_RecoReciever.Get().wordUsed) {
+			if(UDP_RecoReciever.Get().UDPGetPacket() == "Yes") {
 				message = "Yes?";
-				UDP_RecoServer.Get().wordUsed = true;
+				UDP_RecoReciever.Get().wordUsed = true;
 			}
 		}
 	}

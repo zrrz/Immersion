@@ -6,43 +6,43 @@ using System.Text;
 using System.Net.Sockets;
 using System.Threading;
 
-public class UDP_RecoServer : MonoBehaviour
-{
-	static UDP_RecoServer instance;
+public class UDP_RecoReciever : MonoBehaviour {
+
+	static UDP_RecoReciever instance;
 	
 	Thread receiveThread;	
 	UdpClient client;
-
+	
 	public int port = 26000; // DEFAULT UDP PORT !!!!! THE QUAKE ONE ;)
-
+	
 	string strReceiveUDP = "";
 	string LocalIP = String.Empty;
 	string hostname;
-
+	
 	[System.NonSerialized]
 	public bool wordUsed = true;
 	
 	public void Start() {
 		instance = this;
-
+		
 		Application.runInBackground = true;	
 		Init();   
 	}
-
+	
 	private void Init() {
 		receiveThread = new Thread( new ThreadStart(ReceiveData));	
 		receiveThread.IsBackground = true;
 		receiveThread.Start();
 		hostname = Dns.GetHostName();
-
+		
 		IPAddress[] ips = Dns.GetHostAddresses(hostname);
-
+		
 		if (ips.Length > 0) {
 			LocalIP = ips[0].ToString();
 			Debug.Log(" MY IP : "+LocalIP);	
 		}
 	}
-
+	
 	private  void ReceiveData() {
 		client = new UdpClient(port);
 		
@@ -52,11 +52,11 @@ public class UDP_RecoServer : MonoBehaviour
 				IPEndPoint anyIP = new IPEndPoint(IPAddress.Broadcast, port);
 				byte[] data = client.Receive(ref anyIP);
 				strReceiveUDP = Encoding.UTF8.GetString(data);
-
+				
 				wordUsed = false;
-					
+				
 				Debug.Log(strReceiveUDP);		
-
+				
 			} catch (Exception err) {
 				print(err.ToString());
 			}
@@ -72,9 +72,8 @@ public class UDP_RecoServer : MonoBehaviour
 			receiveThread.Abort();	
 		client.Close();	
 	}
-
-	public static UDP_RecoServer Get() {
+	
+	public static UDP_RecoReciever Get() {
 		return instance;
 	}
-	
 }
