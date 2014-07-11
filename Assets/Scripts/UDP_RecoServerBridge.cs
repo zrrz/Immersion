@@ -4,10 +4,8 @@ using UDP_VoiceReco;
 
 public class UDP_RecoServerBridge : MonoBehaviour
 {
+	UDP_RecoServer server;
 	void Start() {
-		UDP_RecoServer.GenerateRandom (1, 2);
+		//server = new UDP_RecoServer();
 	}
-	//UDP_RecoServer recoServer = new UDP_RecoServer();
-	//recoServer;
-	//UDP_RecoServer recoServer = new UDP_RecoServer();
 }
