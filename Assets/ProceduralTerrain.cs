@@ -12,7 +12,7 @@ public class ProceduralTerrain : MonoBehaviour {
 	public Texture2D grass, sand;
 
 	void Start () {
-		int randomSeed = Random.Range(-100, 100);
+		int randomSeed = Random.Range(0, 10);
 
 		surfFA = alloc2DFractArray(size);	
 		if(surfFA == null)
@@ -39,7 +39,7 @@ public class ProceduralTerrain : MonoBehaviour {
 
 		tData.splatPrototypes = t_splatPrototypes;
 
-		SetPercentage (60, tData);
+		SetTexture(tData);
 
 		Terrain terrain = gameObject.AddComponent<Terrain> ();
 		terrain.terrainData = tData;
@@ -50,15 +50,32 @@ public class ProceduralTerrain : MonoBehaviour {
 		terrain.Flush ();
 	}
 
-	public void SetPercentage(double perc, TerrainData tData){
+	public void SetTexture(TerrainData tData) {
+
+
+		float lowestPoint = 0f, heighestPoint = 0f;
+		for(int i = 0; i < tData.heightmapWidth; i++) {
+			for(int j = 0; j < tData.heightmapHeight; j++) {
+				float height = tData.GetHeight(i,j);
+				lowestPoint = height < lowestPoint ? height : lowestPoint;
+				heighestPoint = height > heighestPoint ? height : heighestPoint;
+			}
+		}
+
+		print (tData.alphamapHeight);
+
+		print(lowestPoint);
+		print (heighestPoint);
 
 		float[,,] alphaData = tData.GetAlphamaps (0, 0, tData.alphamapWidth, tData.alphamapHeight);
-		float percentage = (float) perc /100f;
 		
-		for(int y=0; y<tData.alphamapHeight; y++){
-			for(int x = 0; x < tData.alphamapWidth; x++){
-				alphaData[x, y, 0] = 1 - percentage;
-				alphaData[x, y, 1] = percentage;
+		for(int y = 0; y < tData.alphamapHeight; y++) {
+			for(int x = 0; x < tData.alphamapWidth; x++) {
+				float height = tData.GetHeight(y, x);
+				float percentage = height / (lowestPoint + heighestPoint);
+
+				alphaData[x, y, 0] = percentage;
+				alphaData[x, y, 1] = 1 - percentage;
 			}
 		}
 		
