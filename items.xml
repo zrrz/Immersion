@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<ItemCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Items>
+    <Item name="Apple">
+      <need>Hunger</need>
+      <effect>5</effect>
+    </Item>
+    <Item name="Goblin">
+      <need>Safety</need>
+      <effect>-10</effect>
+    </Item>
+    <Item name="Gold">
+      <need>Wealth</need>
+      <effect>8</effect>
+    </Item>
+    <Item name="House">
+      <need>Shelter</need>
+      <effect>6</effect>
+    </Item>
+    <Item name="Water">
+      <need>Thirst</need>
+      <effect>5</effect>
+    </Item>
+  </Items>
+</ItemCollection>

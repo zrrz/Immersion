@@ -2,47 +2,82 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
+/// <summary>
+/// NPC Behavior
+/// </summary>
 public class NPC : MonoBehaviour {
-
-	int highestNeed;
-
-#if DEBUGMODE
-	TextMesh label;
-#endif
-
-	class Need {
-		public Need (string p_name, int p_importance, float p_strength) {
-			name = p_name; importance = p_importance; strength = p_strength;
-		}
+	
+	
+	public Dictionary<string, Need> needs;
+	
+	// Temproary while we get hte XML working
+	public List<Need> tempNeeds;
+	
+	
+	[System.Serializable]
+	public class Need {
+		
+		public string name = "";
+		
 		/// <summary>
-		/// The name of the need.
+		/// Changes based on the actors around the NPC and any custom logic that is applied to this need.
+		/// </summary>
+		public float value = 0;
+		
+		public int priority = 0;
+		
+		/// <summary>
+		/// What modefies the priority of this need.
+		/// </summary>
+		public List<Modifier> priorityModefiers;
+		
+		/// <summary>
+		///  The actions the AI will take to accomidate the need.
+		/// </summary>
+		public List<Action> actions;
+		
+	}
+	
+	
+	[System.Serializable]
+	public class Modifier {
+		
+		/// <summary>
+		/// The name of the need/parmater the modefier will get the value from.
 		/// </summary>
 		public string name;
+		
 		/// <summary>
-		/// The importance of the need.
+		/// An animation curve that changes the priority value based on the modefier value. 
+		/// Gives more precision and fine tuning cabablilities.
 		/// </summary>
-		public int importance;
+		public AnimationCurve value;	
+	}
+	
+	
+	[System.Serializable]
+	public class Action {
+		
+		public string name;
+		
 		/// <summary>
-		/// The current strength of the need from 0-1, 0 being not needed.
+		/// The methode name that will be called to complete the action.
 		/// </summary>
-		public float strength;
+		public string methodeName;
+		
+		/// <summary>
+		/// Whether the action will be excecuted.
+		/// </summary>
+		public string priority;
+		
 	}
 
-	List<Need> needs;
-
-	void Start () {
-#if DEBUGMODE
-		label = transform.GetComponentInChildren<TextMesh>();
-#endif
-		needs = new List<Need>();
-
-		needs.Add(new Need("hunger", 8, 0.5f));
-		needs.Add(new Need("rest", 6, 0f));
-		needs.Add(new Need("safety", 10, 0f));
-
-		highestNeed = 0;
+	void Start () {		
+		needs.Add("Hunger", new Need());
 	}
-
+	
+	/*
 	void Update () {
 		label.text = "";
 		for(int i = 0; i < needs.Count; i++) {
@@ -107,4 +142,5 @@ public class NPC : MonoBehaviour {
 		f = Mathf.Round(f * exp) / exp;
 		return f;
 	}
+     * */
 }
