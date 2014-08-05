@@ -16,7 +16,7 @@ public class CharacterDatabase
     public void Save(string path)
     {
         var serializer = new XmlSerializer(typeof(CharacterDatabase));
-        using (var stream = new FileStream(Path.Combine(Application.persistentDataPath, "CharacterDatabase"), FileMode.Create))
+        using (var stream = new FileStream("CharacterDatabase.xml", FileMode.Create))
         {
             serializer.Serialize(stream, this);
         }

@@ -4,22 +4,16 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(NPC))]
-public class NPCEditor : Editor
-{
+public class NPCEditor : Editor {
 
     SerializedProperty character, needs;
-
-
-
-    // Use this for initialization
+	
     void OnEnable()
     {
         character = serializedObject.FindProperty("character");
         needs = character.FindPropertyRelative("inspectorNeeds");
     }
-
-    
-    // Update is called once per frame
+	
     public override void OnInspectorGUI() {
 
         serializedObject.Update();
@@ -144,5 +138,4 @@ public class NPCEditor : Editor
         
         serializedObject.ApplyModifiedProperties();
     }
-
 }

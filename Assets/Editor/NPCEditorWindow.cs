@@ -17,14 +17,16 @@ public class NPCEditorWindow : EditorWindow {
 
         if (GUILayout.Button("Load Character")) characterDatabase = CharacterDatabase.Load(path);
         if (GUILayout.Button("Save Character")) characterDatabase.Save(path);
-        if (GUILayout.Button("New Character")) characterDatabase = new CharacterDatabase();
+        if (GUILayout.Button ("New Character")) {
+			characterDatabase = new CharacterDatabase ();
+			for (int i = 0, n = characterDatabase.characters.Length; i < n; i++) {
+				characterDatabase.characters[i] = new Character();
+			}
+		}
 
-
-        if (characterDatabase != null && characterDatabase.characters.Length > 0)
-        {
+        if (characterDatabase != null) {
             //	EditorGUILayout.BeginVertical ();
-            for (int i = 0, n = characterDatabase.characters.Length; i < n; i++)
-            {
+            for (int i = 0, n = characterDatabase.characters.Length; i < n; i++) {
                 EditorGUILayout.BeginHorizontal();
                 characterDatabase.characters[i].firstName = EditorGUILayout.TextField("First Name", characterDatabase.characters[i].firstName);
                 characterDatabase.characters[i].middleName = EditorGUILayout.TextField("Middle Name", characterDatabase.characters[i].middleName);
@@ -33,8 +35,5 @@ public class NPCEditorWindow : EditorWindow {
             }
             //	EditorGUILayout.EndVertical ();
         }
-
     }
-
-
 }

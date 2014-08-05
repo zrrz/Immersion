@@ -15,7 +15,7 @@ public class Character {
 
 
     //[XmlAttribute("name")]
-    public string firstName, middleName, lastName;
+    public string firstName = "", middleName = "", lastName = "";
 
 
 	//public Dictionary<string, Need> needs;
