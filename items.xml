@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <ItemCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Items>
-    <Item name="Apple">
+    <Item name="asfas">
       <need>Hunger</need>
       <effect>5</effect>
     </Item>
@@ -20,6 +20,10 @@
     <Item name="Water">
       <need>Thirst</need>
       <effect>5</effect>
+    </Item>
+    <Item name="TestItem">
+      <need>Testing</need>
+      <effect>9000</effect>
     </Item>
   </Items>
 </ItemCollection>

@@ -8,9 +8,9 @@ public class ObjectEditorWindow : EditorWindow {
 
 	string path = "items.xml";
 
-	[MenuItem("Window/Object Editor")]
+	[MenuItem("Immersion/Object Editor")]
 	public static void ShowWindow() {
-		EditorWindow.GetWindow (typeof(ObjectEditorWindow));
+		EditorWindow.GetWindow (typeof(ObjectEditorWindow), false, "Object Editor", false);
 	}
 
 	void OnGUI() {
@@ -27,7 +27,7 @@ public class ObjectEditorWindow : EditorWindow {
 		//	EditorGUILayout.BeginVertical ();
 			for (int i = 0, n = container.items.Length; i < n; i++) {
 				EditorGUILayout.BeginHorizontal();
-				container.items[i].name = EditorGUILayout.TextField("Name", container.items[i].name);
+				container.items[i].name = EditorGUILayout.TextField("Name", container.items[i].name, GUILayout.ExpandWidth(false));
 				container.items[i].need = EditorGUILayout.TextField("Need", container.items[i].need);
 				container.items[i].effect = EditorGUILayout.FloatField("Effect", container.items[i].effect);
 				EditorGUILayout.EndHorizontal();

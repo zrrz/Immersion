@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 using System.Xml;
 using System.Xml.Serialization;
-using System.Collections.Generic;
 using System.IO;
 
 public class Item {
@@ -18,7 +19,7 @@ public class Item {
 [XmlRoot("ItemCollection")]
 public class ItemContainer
 {
-	[XmlArray("Items"),XmlArrayItem("Item")]
+	[XmlArray("Items"), XmlArrayItem("Item")]
 	public Item[] items;
 
 	public void Save(string path) {

@@ -2,81 +2,25 @@
 using System.Collections;
 using System.Collections.Generic;
 
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
+
 
 /// <summary>
-/// NPC Behavior
+/// NPC contains and manages the AI behavior, character info, character rendering etc.
 /// </summary>
 public class NPC : MonoBehaviour {
-	
-	
-	public Dictionary<string, Need> needs;
-	
-	// Temproary while we get hte XML working
-	public List<Need> tempNeeds;
-	
-	
-	[System.Serializable]
-	public class Need {
-		
-		public string name = "";
-		
-		/// <summary>
-		/// Changes based on the actors around the NPC and any custom logic that is applied to this need.
-		/// </summary>
-		public float value = 0;
-		
-		public int priority = 0;
-		
-		/// <summary>
-		/// What modefies the priority of this need.
-		/// </summary>
-		public List<Modifier> priorityModefiers;
-		
-		/// <summary>
-		///  The actions the AI will take to accomidate the need.
-		/// </summary>
-		public List<Action> actions;
-		
-	}
-	
-	
-	[System.Serializable]
-	public class Modifier {
-		
-		/// <summary>
-		/// The name of the need/parmater the modefier will get the value from.
-		/// </summary>
-		public string name;
-		
-		/// <summary>
-		/// An animation curve that changes the priority value based on the modefier value. 
-		/// Gives more precision and fine tuning cabablilities.
-		/// </summary>
-		public AnimationCurve value;	
-	}
-	
-	
-	[System.Serializable]
-	public class Action {
-		
-		public string name;
-		
-		/// <summary>
-		/// The methode name that will be called to complete the action.
-		/// </summary>
-		public string methodeName;
-		
-		/// <summary>
-		/// Whether the action will be excecuted.
-		/// </summary>
-		public string priority;
-		
-	}
 
-	void Start () {		
-		needs.Add("Hunger", new Need());
-	}
-	
+
+    public Character character;
+
+
+    void Start() {
+
+    }
+
+
 	/*
 	void Update () {
 		label.text = "";
