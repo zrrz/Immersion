@@ -6,7 +6,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
 
-public class Item {
+public class ItemXML {
 	[XmlAttribute("name")]
 	public string name = "item";
 
@@ -19,8 +19,8 @@ public class Item {
 [XmlRoot("ItemCollection")]
 public class ItemContainer
 {
-	[XmlArray("Items"), XmlArrayItem("Item")]
-	public Item[] items;
+	[XmlArray("Items"), XmlArrayItem("ItemXML")]
+	public ItemXML[] items;
 
 	public void Save(string path) {
 		var serializer = new XmlSerializer(typeof(ItemContainer));
