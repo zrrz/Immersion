@@ -17,7 +17,7 @@ public class NPC : MonoBehaviour {
 
 
     void Start() {
-
+        character.Initialize();
     }
 
 

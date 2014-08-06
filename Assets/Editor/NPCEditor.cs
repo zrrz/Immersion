@@ -4,19 +4,37 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(NPC))]
-public class NPCEditor : Editor {
+public class NPCEditor : Editor
+{
 
-    SerializedProperty character, needs;
-	
+    SerializedProperty character, needs, firstName, middleName, lastName;
+
+
+
+    // Use this for initialization
     void OnEnable()
     {
         character = serializedObject.FindProperty("character");
         needs = character.FindPropertyRelative("inspectorNeeds");
+        firstName = character.FindPropertyRelative("firstName");
+        middleName = character.FindPropertyRelative("middleName");
+        lastName = character.FindPropertyRelative("lastName");
+
     }
-	
+
+    
+    // Update is called once per frame
     public override void OnInspectorGUI() {
 
         serializedObject.Update();
+
+
+        firstName.stringValue = EditorGUILayout.TextField("First Name", firstName.stringValue);
+        middleName.stringValue = EditorGUILayout.TextField("Middle Name",  middleName.stringValue);
+        lastName.stringValue = EditorGUILayout.TextField("Last Name", lastName.stringValue);
+
+
+
 
         GUILayout.Space(5f);
        
@@ -32,6 +50,7 @@ public class NPCEditor : Editor {
                 SerializedProperty need = needs.GetArrayElementAtIndex(i);
                 SerializedProperty needName = need.FindPropertyRelative("name");
 
+
                 if (EditorGUITools.DrawHeader(needName.stringValue, needName.stringValue + "_menu"))
                 {
 
@@ -41,7 +60,7 @@ public class NPCEditor : Editor {
                     SerializedProperty actions = need.FindPropertyRelative("actions");
 
 
-                    GUI.color = new Color(0.65f, 0.65f, 0.65f);
+                    GUI.color = new Color(0.4f, 0.4f, 0.4f);
                     GUILayout.BeginVertical(EditorStyles.numberField);
                     GUI.color = Color.white;
 
@@ -62,7 +81,7 @@ public class NPCEditor : Editor {
 
                     GUILayout.EndHorizontal();
 
-                    GUILayout.Space(5);
+                    GUILayout.Space(10);
 
 
                     // Show modefiers
@@ -70,6 +89,13 @@ public class NPCEditor : Editor {
                     {
 
                         GUILayout.BeginVertical(EditorStyles.numberField);
+
+                        GUILayout.BeginHorizontal();
+                        GUILayout.Label("Name:");
+                        GUILayout.Label("Value:");
+                        GUILayout.EndHorizontal();
+
+                        
 
 
                         for (int k = 0, m = priorityModefiers.arraySize; k < m; k++)
@@ -82,9 +108,9 @@ public class NPCEditor : Editor {
                             // Name, value, delete
                             GUILayout.BeginHorizontal();
 
-                            GUILayout.Label("Name:");
+                            
                             modefierNmae.stringValue = GUILayout.TextField(modefierNmae.stringValue, GUILayout.MinWidth(75));
-                            GUILayout.Label("Value:");
+                            
                             modefierValue.animationCurveValue = EditorGUILayout.CurveField(modefierValue.animationCurveValue);
 
                             if (GUILayout.Button("X", GUILayout.Width(25))) { priorityModefiers.DeleteArrayElementAtIndex(k); k = m; }
@@ -98,6 +124,8 @@ public class NPCEditor : Editor {
                         GUILayout.EndVertical();
                     }
 
+
+                    GUILayout.Space(5);
 
                     // Show Actions TODO
                     if (EditorGUITools.DrawHeader("Actions(" + actions.arraySize + "):", needName.stringValue + "_actions"))
@@ -123,19 +151,17 @@ public class NPCEditor : Editor {
         }
 
 
-        //DrawDefaultInspector();
 
         GUILayout.Space(5f);
 
-        GUILayout.BeginHorizontal();
-        //if (GUILayout.Button("Save", EditorStyles.miniButtonLeft)) foreach(NPC npc in targets)  npc.Save("HungryBob.xml");
-        //if (GUILayout.Button("Load", EditorStyles.miniButtonMid)) needs.InsertArrayElementAtIndex(needs.arraySize);
-        //if (GUILayout.Button("Reset", EditorStyles.miniButtonRight)) needs.InsertArrayElementAtIndex(needs.arraySize);
-        GUILayout.EndHorizontal();
+        //GUILayout.BeginHorizontal();
+        //if (GUILayout.Button("Save To Database", EditorStyles.miniButtonLeft)) 
+       // if (GUILayout.Button("Add To Database", EditorStyles.miniButtonLeft)) //
+        //if (GUILayout.Button("Load from Database", EditorStyles.miniButtonMid)) //
+       // GUILayout.EndHorizontal();
 
-
-        //DrawDefaultInspector();
         
         serializedObject.ApplyModifiedProperties();
     }
+
 }

@@ -10,13 +10,13 @@ using System.IO;
 public class CharacterDatabase
 {
     [XmlArray("Characters"), XmlArrayItem("Character")] 
-    public Character[] characters = new Character[1];
+    public List<Character> characters;
 
 
     public void Save(string path)
     {
         var serializer = new XmlSerializer(typeof(CharacterDatabase));
-        using (var stream = new FileStream("CharacterDatabase.xml", FileMode.Create))
+        using (var stream = new FileStream(path, FileMode.Create))
         {
             serializer.Serialize(stream, this);
         }
@@ -37,4 +37,12 @@ public class CharacterDatabase
         var serializer = new XmlSerializer(typeof(CharacterDatabase));
         return serializer.Deserialize(new StringReader(text)) as CharacterDatabase;
     }
+
+    public void AddCharacter(Character character){
+
+        characters.Add(character);
+
+    }
+
+
 }

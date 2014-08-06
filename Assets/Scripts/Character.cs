@@ -17,12 +17,15 @@ public class Character {
     //[XmlAttribute("name")]
     public string firstName = "", middleName = "", lastName = "";
 
+    [XmlIgnore]
+	public Dictionary<string, Need> needs;
 
-	//public Dictionary<string, Need> needs;
-	
+    [XmlIgnore]
+    public Dictionary<string, Want> wants;
+
 
     [XmlArray("Needs"), XmlArrayItem("Need")]
-	public List<Need> inspectorNeeds;
+    public List<Need> inspectorNeeds;
 	
 	
 
@@ -52,6 +55,32 @@ public class Character {
 		
 	}
 
+    [System.Serializable]
+    public class Want
+    {
+
+        [XmlAttribute("name")]
+        public string name = "";
+
+        /// <summary>
+        /// Changes based on the actors around the Character and any custom logic that is applied to this need.
+        /// </summary>
+        public float value = 0;
+
+        public int priority = 0;
+
+        /// <summary>
+        /// What modefies the priority of this need.
+        /// </summary>
+        [XmlArray("Modifiers"), XmlArrayItem("Modifier")]
+        public List<Modifier> priorityModefiers;
+
+        /// <summary>
+        ///  The actions the AI will take to accomidate the need.
+        /// </summary>
+        public List<Action> actions;
+
+    }
     
     [System.Serializable]
 	public class Modifier {
@@ -68,8 +97,34 @@ public class Character {
 		/// </summary>
 		public AnimationCurve value;	
 	}
-	
-	
+
+    [System.Serializable]
+    public class Trait
+    {
+
+        [XmlAttribute("name")]
+        public string name = "";
+
+        /// <summary>
+        /// Changes based on the actors around the Character and any custom logic that is applied to this need.
+        /// </summary>
+        public float value = 0;
+
+        public int priority = 0;
+
+        /// <summary>
+        /// What modefies the priority of this need.
+        /// </summary>
+        [XmlArray("Modifiers"), XmlArrayItem("Modifier")]
+        public List<Modifier> priorityModefiers;
+
+        /// <summary>
+        ///  The actions the AI will take to accomidate the need.
+        /// </summary>
+        public List<Action> actions;
+
+    }
+
 	[System.Serializable]
 	public class Action {
 
@@ -88,39 +143,18 @@ public class Character {
 		
 	}
 
-	void Start () {		
-		//needs.Add("Hunger", new Need());
+
+    public void Initialize()
+    {
+
+        needs = new Dictionary<string, Need>();
+
+        // Temporary:
+        // Load the values from the inspector into the actial dictionary for use.
+        for (int i = 0, n = inspectorNeeds.Count; i < n; i++)
+        {
+            needs.Add(inspectorNeeds[i].name, inspectorNeeds[i]);
+        }
 	}
 
-
-
-
-    /// <summary>
-    /// Saves the class to a XML format file at path.
-    /// </summary>
-    /// <param name="path"></param>
-    [ContextMenu("Save")]
-    public void Save(string path) {
-        var serializer = new XmlSerializer(typeof(Character));
-        using (var stream = new FileStream(path, FileMode.Create)) {
-            serializer.Serialize(stream, this);
-        }  
-    }
-
-    /// <summary>
-    /// Load the class 
-    /// </summary>
-    /// <param name="path"></param>
-    /// <returns>Character</returns>
-    public static Character Load(string path) {
-        var serializer = new XmlSerializer(typeof(Character));
-        using (var stream = new FileStream(path, FileMode.Open)) {
-            return serializer.Deserialize(stream) as Character;
-        }
-    }
-
-    public static Character LoadFromText(string text) {
-        var serializer = new XmlSerializer(typeof(Character));
-        return serializer.Deserialize(new StringReader(text)) as Character;
-    }
 }
