@@ -12,7 +12,6 @@ using System.IO;
 /// </summary>
 public class NPC : MonoBehaviour {
 
-
     public Character character;
 
 

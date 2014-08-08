@@ -3,23 +3,7 @@
   <Items>
     <ItemXML>
       <name>Apple</name>
-      <Effects>
-        <EffectorXML>
-          <Want>Hunger</Want>
-          <Sense>Touch</Sense>
-          <Value>10</Value>
-        </EffectorXML>
-      </Effects>
-    </ItemXML>
-    <ItemXML>
-      <name>Goblin</name>
-      <Effects>
-        <EffectorXML>
-          <Want>Safety</Want>
-          <Sense>Sight</Sense>
-          <Value>-10</Value>
-        </EffectorXML>
-      </Effects>
+      <Effects />
     </ItemXML>
   </Items>
 </ItemDatabase>

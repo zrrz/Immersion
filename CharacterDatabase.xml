@@ -2,30 +2,53 @@
 <CharacterDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Characters>
     <Character>
-      <firstName>Bob</firstName>
-      <middleName>Hungry</middleName>
+      <firstName>Freddy</firstName>
+      <middleName />
       <lastName>Bobinson</lastName>
+      <Stats>
+        <Stat>
+          <name>Hello</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Hi</name>
+          <value>100</value>
+        </Stat>
+      </Stats>
       <Needs>
         <Need name="Hunger">
-          <value>100</value>
           <priority>0</priority>
           <Modifiers>
             <Modifier name="Hunger">
               <value>
                 <keys>
                   <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
+                    <time>0.192484081</time>
+                    <value>13.2224426</value>
+                    <inTangent>1.41712391</inTangent>
+                    <outTangent>1.41712391</outTangent>
+                    <tangentMode>10</tangentMode>
                   </Keyframe>
                   <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
+                    <time>23.6296539</time>
+                    <value>46.4358177</value>
+                    <inTangent>1.04321647</inTangent>
+                    <outTangent>1.04321647</outTangent>
+                    <tangentMode>10</tangentMode>
+                  </Keyframe>
+                  <Keyframe>
+                    <time>58.7204056</time>
+                    <value>69.92238</value>
+                    <inTangent>0.407476783</inTangent>
+                    <outTangent>0.407476783</outTangent>
+                    <tangentMode>10</tangentMode>
+                  </Keyframe>
+                  <Keyframe>
+                    <time>90.2812653</time>
+                    <value>74.51904</value>
+                    <inTangent>0.145644456</inTangent>
+                    <outTangent>0.145644456</outTangent>
+                    <tangentMode>10</tangentMode>
                   </Keyframe>
                 </keys>
                 <preWrapMode>ClampForever</preWrapMode>
@@ -60,15 +83,15 @@
                   <Keyframe>
                     <time>0</time>
                     <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
+                    <inTangent>0</inTangent>
+                    <outTangent>0</outTangent>
                     <tangentMode>0</tangentMode>
                   </Keyframe>
                   <Keyframe>
                     <time>1</time>
                     <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
+                    <inTangent>2</inTangent>
+                    <outTangent>2</outTangent>
                     <tangentMode>0</tangentMode>
                   </Keyframe>
                 </keys>
@@ -80,671 +103,82 @@
           <actions />
         </Need>
         <Need name="Thirst">
-          <value>100</value>
           <priority>0</priority>
-          <Modifiers>
-            <Modifier name="Hunger">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Thirst">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Fatigue">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Fatigue">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-          </Modifiers>
+          <Modifiers />
           <actions />
         </Need>
         <Need name="Happiness">
-          <value>100</value>
           <priority>0</priority>
-          <Modifiers>
-            <Modifier name="Hunger">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Thirst">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Fatigue">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Fatigue">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-          </Modifiers>
+          <Modifiers />
           <actions />
         </Need>
         <Need name="Safty">
-          <value>100</value>
           <priority>0</priority>
-          <Modifiers>
-            <Modifier name="Hunger">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Thirst">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Fatigue">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Fatigue">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-          </Modifiers>
+          <Modifiers />
           <actions />
         </Need>
         <Need name="Rest">
-          <value>100</value>
           <priority>0</priority>
-          <Modifiers>
-            <Modifier name="Hunger">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Thirst">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Fatigue">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Fatigue">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-          </Modifiers>
+          <Modifiers />
           <actions />
         </Need>
         <Need name="Hygiene">
-          <value>100</value>
           <priority>0</priority>
-          <Modifiers>
-            <Modifier name="Hunger">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Thirst">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Fatigue">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Fatigue">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-          </Modifiers>
+          <Modifiers />
           <actions />
         </Need>
         <Need name="Comfort">
-          <value>100</value>
           <priority>0</priority>
-          <Modifiers>
-            <Modifier name="Hunger">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Thirst">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Fatigue">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Fatigue">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-          </Modifiers>
+          <Modifiers />
           <actions />
         </Need>
         <Need name="Shelter">
-          <value>100</value>
+          <priority>0</priority>
+          <Modifiers />
+          <actions />
+        </Need>
+      </Needs>
+      <Wants>
+        <Want name="Socialize">
           <priority>0</priority>
           <Modifiers>
-            <Modifier name="Hunger">
+            <Modifier name="">
               <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Thirst">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Fatigue">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
-              </value>
-            </Modifier>
-            <Modifier name="Fatigue">
-              <value>
-                <keys>
-                  <Keyframe>
-                    <time>0</time>
-                    <value>0</value>
-                    <inTangent>2</inTangent>
-                    <outTangent>2</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                  <Keyframe>
-                    <time>1</time>
-                    <value>1</value>
-                    <inTangent>0</inTangent>
-                    <outTangent>0</outTangent>
-                    <tangentMode>0</tangentMode>
-                  </Keyframe>
-                </keys>
-                <preWrapMode>ClampForever</preWrapMode>
-                <postWrapMode>ClampForever</postWrapMode>
+                <keys />
+                <preWrapMode>PingPong</preWrapMode>
+                <postWrapMode>PingPong</postWrapMode>
               </value>
             </Modifier>
           </Modifiers>
           <actions />
-        </Need>
-      </Needs>
+        </Want>
+        <Want name="Luxury">
+          <priority>0</priority>
+          <Modifiers>
+            <Modifier name="">
+              <value>
+                <keys />
+                <preWrapMode>PingPong</preWrapMode>
+                <postWrapMode>PingPong</postWrapMode>
+              </value>
+            </Modifier>
+          </Modifiers>
+          <actions />
+        </Want>
+        <Want name="Love">
+          <priority>0</priority>
+          <Modifiers>
+            <Modifier name="">
+              <value>
+                <keys />
+                <preWrapMode>PingPong</preWrapMode>
+                <postWrapMode>PingPong</postWrapMode>
+              </value>
+            </Modifier>
+          </Modifiers>
+          <actions />
+        </Want>
+      </Wants>
     </Character>
   </Characters>
 </CharacterDatabase>
