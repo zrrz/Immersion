@@ -3,15 +3,15 @@ using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
-public class NPCEditorWindow : EditorWindow {
+public class NPCDataBase : EditorWindow {
 
     CharacterDatabase characterDatabase;
 
 	string path = "CharacterDatabase.xml";
 
-	[MenuItem("Immersion/NPC Editor")]
+	[MenuItem("Immersion/NPC Database")]
 	public static void ShowWindow() {
-        EditorWindow.GetWindow(typeof(NPCEditorWindow), false, "Character Editor", true);
+        EditorWindow.GetWindow(typeof(NPCDataBase), false, "NPC Database", true);
 	}
 
 
@@ -25,36 +25,66 @@ public class NPCEditorWindow : EditorWindow {
             characterDatabase.characters[i] = new Character();
         }
 
+        characterDatabase = CharacterDatabase.Load(path);
+
     }
 
     void OnGUI() {
 
-        if (GUILayout.Button("Load Character")) characterDatabase = CharacterDatabase.Load(path);
-        if (GUILayout.Button("Save Character")) { characterDatabase.Save(path); } 
-        if (GUILayout.Button("Add Selected Character"))
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("Load Characters", EditorStyles.miniButtonLeft)) characterDatabase = CharacterDatabase.Load(path);
+        if (GUILayout.Button("Save Characters", EditorStyles.miniButtonMid)) { characterDatabase.Save(path); }
+        if (GUILayout.Button("Add New Character", EditorStyles.miniButtonMid)) { characterDatabase.characters.Add(new Character()); }
+        if (GUILayout.Button("Generate New Character", EditorStyles.miniButtonMid)) { /* TODO: ADD GENERATION HERE */ } 
+        if (GUILayout.Button("Add Selected Character", EditorStyles.miniButtonRight))
         {
-            if (Selection.activeGameObject.GetComponent<NPC>())
+            if (Selection.activeGameObject && Selection.activeGameObject.GetComponent<NPC>())
             {
                 characterDatabase.AddCharacter(Selection.activeGameObject.GetComponent<NPC>().character);
             }
         }
+        GUILayout.EndHorizontal();
 
+        GUILayout.Space(5);
 
         if (characterDatabase != null && characterDatabase.characters.Count > 0)
         {
-            //	EditorGUILayout.BeginVertical ();
+
+            MySerializedObject serializedObjectClass = null;
+
             for (int i = 0, n = characterDatabase.characters.Count; i < n; i++)
             {
-                EditorGUILayout.BeginHorizontal();
-                characterDatabase.characters[i].firstName = EditorGUILayout.TextField("First Name:", characterDatabase.characters[i].firstName);
-                characterDatabase.characters[i].middleName = EditorGUILayout.TextField("Middle Name:", characterDatabase.characters[i].middleName);
-                characterDatabase.characters[i].lastName = EditorGUILayout.TextField("Last Name:", characterDatabase.characters[i].lastName);
-                EditorGUILayout.EndHorizontal();
+                if (EditorGUITools.DrawHeader(characterDatabase.characters[i].firstName + " " + characterDatabase.characters[i].middleName + " " + characterDatabase.characters[i].lastName, characterDatabase.characters[i].firstName + " " + characterDatabase.characters[i].middleName + " " + characterDatabase.characters[i].lastName))
+                {
+                    GUILayout.BeginVertical(EditorStyles.textArea);
+
+                    serializedObjectClass = (MySerializedObject)ScriptableObject.CreateInstance(typeof(MySerializedObject));
+                    serializedObjectClass.value = characterDatabase.characters[i];
+
+                    SerializedObject serilizedNPCClass = new SerializedObject(serializedObjectClass);
+                    NPCEditor.DrawNPC(serilizedNPCClass.FindProperty("value"), serilizedNPCClass);
+
+                    if (GUILayout.Button("Remove", EditorStyles.toolbarButton))
+                        characterDatabase.characters.RemoveAt(i);
+                    
+                    EditorGUILayout.EndVertical();
+                    
+                }
             }
-            //	EditorGUILayout.EndVertical ();
         }
 
     }
 
 
+
+}
+
+public class MySerializedObject : ScriptableObject
+{
+
+    public Character value;
+
+    public MySerializedObject(Character value) { this.value = value; }
+
+ 
 }

@@ -18,16 +18,34 @@ public class Character {
     public string firstName = "", middleName = "", lastName = "";
 
     [XmlIgnore]
+    public Dictionary<string, Stat> stats;
+
+
+    [XmlIgnore]
 	public Dictionary<string, Need> needs;
 
     [XmlIgnore]
     public Dictionary<string, Want> wants;
 
 
+
+    [XmlArray("Stats"), XmlArrayItem("Stat")]
+    public List<Stat> inspectorStats;
+
     [XmlArray("Needs"), XmlArrayItem("Need")]
     public List<Need> inspectorNeeds;
-	
-	
+
+    [XmlArray("Wants"), XmlArrayItem("Want")]
+    public List<Want> inspectorWants;
+
+
+    [System.Serializable]
+    public class Stat
+    {
+        public string name;
+        public float value = 0;
+    }
+
 
 	[System.Serializable]
 	public class Need {
@@ -35,23 +53,19 @@ public class Character {
         [XmlAttribute("name")]
 		public string name = "";
 		
-		/// <summary>
-		/// Changes based on the actors around the Character and any custom logic that is applied to this need.
-		/// </summary>
-        public float value = 0;
-		
 		public int priority = 0;
 		
 		/// <summary>
-		/// What modifies the priority of this need.
+		/// What modefies the priority of this need.
 		/// </summary>
         [XmlArray("Modifiers"), XmlArrayItem("Modifier")]
-        public List<Modifier> priorityModifiers;
+        public List<PriorityModifier> priorityModefiers;
 		
 		/// <summary>
 		///  The actions the AI will take to accomidate the need.
 		/// </summary>
-		public List<Action> actions;
+        [XmlArray("Actiosn"), XmlArrayItem("Action")]
+        public List<Action> actions;
 		
 	}
 
@@ -62,68 +76,37 @@ public class Character {
         [XmlAttribute("name")]
         public string name = "";
 
-        /// <summary>
-        /// Changes based on the actors around the Character and any custom logic that is applied to this need.
-        /// </summary>
-        public float value = 0;
-
         public int priority = 0;
 
         /// <summary>
-        /// What modifies the priority of this need.
+        /// What modefies the priority of this need.
         /// </summary>
         [XmlArray("Modifiers"), XmlArrayItem("Modifier")]
-        public List<Modifier> priorityModifiers;
+        public List<PriorityModifier> priorityModefiers;
 
         /// <summary>
         ///  The actions the AI will take to accomidate the need.
         /// </summary>
+        [XmlArray("Actions"), XmlArrayItem("Action")]
         public List<Action> actions;
 
     }
     
     [System.Serializable]
-	public class Modifier {
+	public class PriorityModifier {
 		
 		/// <summary>
-		/// The name of the need/parmater the modifier will get the value from.
+		/// The name of the need/parmater the modefier will get the value from.
 		/// </summary>
         [XmlAttribute("name")]
         public string name;
 		
 		/// <summary>
-		/// An animation curve that changes the priority value based on the modifier value. 
+		/// An animation curve that changes the priority value based on the modefier value. 
 		/// Gives more precision and fine tuning cabablilities.
 		/// </summary>
 		public AnimationCurve value;	
 	}
-
-    [System.Serializable]
-    public class Trait
-    {
-
-        [XmlAttribute("name")]
-        public string name = "";
-
-        /// <summary>
-        /// Changes based on the actors around the Character and any custom logic that is applied to this need.
-        /// </summary>
-        public float value = 0;
-
-        public int priority = 0;
-
-        /// <summary>
-        /// What modifies the priority of this need.
-        /// </summary>
-        [XmlArray("Modifiers"), XmlArrayItem("Modifier")]
-        public List<Modifier> priorityModifiers;
-
-        /// <summary>
-        ///  The actions the AI will take to accomidate the need.
-        /// </summary>
-        public List<Action> actions;
-
-    }
 
 	[System.Serializable]
 	public class Action {
@@ -147,14 +130,50 @@ public class Character {
     public void Initialize()
     {
 
+        stats = new Dictionary<string, Stat>();
         needs = new Dictionary<string, Need>();
+        wants = new Dictionary<string, Want>();
 
         // Temporary:
         // Load the values from the inspector into the actial dictionary for use.
+        for (int i = 0, n = inspectorStats.Count; i < n; i++)
+        {
+            stats.Add(inspectorStats[i].name, inspectorStats[i]);
+        }
+
         for (int i = 0, n = inspectorNeeds.Count; i < n; i++)
         {
             needs.Add(inspectorNeeds[i].name, inspectorNeeds[i]);
         }
+
+        for (int i = 0, n = inspectorWants.Count; i < n; i++)
+        {
+            wants.Add(inspectorWants[i].name, inspectorWants[i]);
+        }
+
 	}
+
+
+    public void CalculateStats()
+    {
+
+        stats["Hunger"].value -= 1;
+        stats["Thirst"].value -= 1;
+        stats["Rest"].value -= 1;
+        stats["Hunger"].value -= 1;
+        stats["Hunger"].value -= 1;
+
+    }
+
+    public void CalculateNeeds()
+    {
+
+    }
+
+    public void CalculateWants()
+    {
+
+    }
+
 
 }

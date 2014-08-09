@@ -10,6 +10,7 @@ public class NPCDebugger : MonoBehaviour {
 
     public List<NPC> npcList;
     public List<Rect> windows;
+    public List<Vector2> scrollViews;
 
 
 
@@ -42,6 +43,7 @@ public class NPCDebugger : MonoBehaviour {
                 {
                     npcList.Add(npc);
                     windows.Add(new Rect(0, 0, 100, 100));
+                    scrollViews.Add(new Vector2(0, 0));
                 }
             }
         }
@@ -73,20 +75,80 @@ public class NPCDebugger : MonoBehaviour {
         Character character = npc.character;
 
 
-        GUILayout.Box(character.firstName + " " + character.lastName);
+        GUILayout.Box(character.firstName + " " + character.lastName, GUILayout.Width(300));
 
+        scrollViews[ID] = GUILayout.BeginScrollView(scrollViews[ID], GUILayout.Height(300));
+        GUILayout.BeginVertical();
+        int rows = 0;
+
+
+
+        GUILayout.Space(10);
+        GUILayout.Box("Stats:");
+        GUILayout.BeginHorizontal();       
+        foreach (string key in character.stats.Keys)
+        {                 
+            rows++;
+
+            GUILayout.Label(character.stats[key].name + ": " + character.stats[key].value, GUILayout.Width(150));
+            if (rows == 2)
+            {
+                GUILayout.EndHorizontal();
+                GUILayout.BeginHorizontal();
+                rows = 0;
+            }
+        }
+        rows = 0;
+        GUILayout.EndHorizontal();
+
+
+        GUILayout.Space(10);
+        GUILayout.Box("Needs:");
+        GUILayout.BeginHorizontal();  
         foreach (string key in character.needs.Keys)
         {
-
-            GUILayout.Box(character.needs[key].priority + ". " + key + ": " + character.needs[key].value);
-
+            rows++;
+            GUILayout.Label(key + " priority: " + character.needs[key].priority, GUILayout.Width(150));
+            if (rows == 2)
+            {
+                GUILayout.EndHorizontal();
+                GUILayout.BeginHorizontal();
+                rows = 0;
+            }
         }
+        rows = 0;
+        GUILayout.EndHorizontal();
 
+
+
+        GUILayout.Space(10);
+        GUILayout.Box("Wants:");
+        GUILayout.BeginHorizontal();   
+        foreach (string key in character.wants.Keys)
+        {
+            rows++;
+            GUILayout.Label(key + " priority: " + character.wants[key].priority, GUILayout.Width(150));
+            if (rows == 2)
+            {
+                GUILayout.EndHorizontal();
+                GUILayout.BeginHorizontal();
+                rows = 0;
+            }
+        }
+        GUILayout.EndHorizontal();
+        GUILayout.EndScrollView();
+        
+        
+        GUILayout.EndVertical();
         if (GUILayout.Button("Close"))
         {
             npcList.RemoveAt(ID);
             windows.RemoveAt(ID);
+            scrollViews.RemoveAt(ID);
         }
+
+
+
         GUI.DragWindow();
 
     }
