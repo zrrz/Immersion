@@ -43,10 +43,10 @@ public class Character {
 		public int priority = 0;
 		
 		/// <summary>
-		/// What modefies the priority of this need.
+		/// What modifies the priority of this need.
 		/// </summary>
         [XmlArray("Modifiers"), XmlArrayItem("Modifier")]
-        public List<Modifier> priorityModefiers;
+        public List<Modifier> priorityModifiers;
 		
 		/// <summary>
 		///  The actions the AI will take to accomidate the need.
@@ -70,10 +70,10 @@ public class Character {
         public int priority = 0;
 
         /// <summary>
-        /// What modefies the priority of this need.
+        /// What modifies the priority of this need.
         /// </summary>
         [XmlArray("Modifiers"), XmlArrayItem("Modifier")]
-        public List<Modifier> priorityModefiers;
+        public List<Modifier> priorityModifiers;
 
         /// <summary>
         ///  The actions the AI will take to accomidate the need.
@@ -86,13 +86,13 @@ public class Character {
 	public class Modifier {
 		
 		/// <summary>
-		/// The name of the need/parmater the modefier will get the value from.
+		/// The name of the need/parmater the modifier will get the value from.
 		/// </summary>
         [XmlAttribute("name")]
         public string name;
 		
 		/// <summary>
-		/// An animation curve that changes the priority value based on the modefier value. 
+		/// An animation curve that changes the priority value based on the modifier value. 
 		/// Gives more precision and fine tuning cabablilities.
 		/// </summary>
 		public AnimationCurve value;	
@@ -113,10 +113,10 @@ public class Character {
         public int priority = 0;
 
         /// <summary>
-        /// What modefies the priority of this need.
+        /// What modifies the priority of this need.
         /// </summary>
         [XmlArray("Modifiers"), XmlArrayItem("Modifier")]
-        public List<Modifier> priorityModefiers;
+        public List<Modifier> priorityModifiers;
 
         /// <summary>
         ///  The actions the AI will take to accomidate the need.

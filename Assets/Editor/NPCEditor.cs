@@ -6,12 +6,8 @@ using UnityEngine;
 [CustomEditor(typeof(NPC))]
 public class NPCEditor : Editor
 {
-
     SerializedProperty character, needs, firstName, middleName, lastName;
-
-
-
-    // Use this for initialization
+	
     void OnEnable()
     {
         character = serializedObject.FindProperty("character");
@@ -19,22 +15,15 @@ public class NPCEditor : Editor
         firstName = character.FindPropertyRelative("firstName");
         middleName = character.FindPropertyRelative("middleName");
         lastName = character.FindPropertyRelative("lastName");
-
     }
-
-    
-    // Update is called once per frame
+	
     public override void OnInspectorGUI() {
 
-        serializedObject.Update();
-
+		serializedObject.Update ();
 
         firstName.stringValue = EditorGUILayout.TextField("First Name", firstName.stringValue);
         middleName.stringValue = EditorGUILayout.TextField("Middle Name",  middleName.stringValue);
         lastName.stringValue = EditorGUILayout.TextField("Last Name", lastName.stringValue);
-
-
-
 
         GUILayout.Space(5f);
        
@@ -45,21 +34,17 @@ public class NPCEditor : Editor
 
             for (int i = 0, n = needs.arraySize; i < n; i++)
             {
-
                 // Get the variables from the need
                 SerializedProperty need = needs.GetArrayElementAtIndex(i);
                 SerializedProperty needName = need.FindPropertyRelative("name");
 
-
                 if (EditorGUITools.DrawHeader(needName.stringValue, needName.stringValue + "_menu"))
                 {
-
                     SerializedProperty needPriority = need.FindPropertyRelative("priority");
                     SerializedProperty needValue = need.FindPropertyRelative("value");
-                    SerializedProperty priorityModefiers = need.FindPropertyRelative("priorityModefiers");
+                    SerializedProperty priorityModifiers = need.FindPropertyRelative("priorityModifiers");
                     SerializedProperty actions = need.FindPropertyRelative("actions");
-
-
+				
                     GUI.color = new Color(0.4f, 0.4f, 0.4f);
                     GUILayout.BeginVertical(EditorStyles.numberField);
                     GUI.color = Color.white;
@@ -84,10 +69,9 @@ public class NPCEditor : Editor
                     GUILayout.Space(10);
 
 
-                    // Show modefiers
-                    if (EditorGUITools.DrawHeader("Priority Modefiers (" + priorityModefiers.arraySize + "):", needName.stringValue + "_priority"))
+                    // Show modifiers
+                    if (EditorGUITools.DrawHeader("Priority Modifiers (" + priorityModifiers.arraySize + "):", needName.stringValue + "_priority"))
                     {
-
                         GUILayout.BeginVertical(EditorStyles.numberField);
 
                         GUILayout.BeginHorizontal();
@@ -95,36 +79,30 @@ public class NPCEditor : Editor
                         GUILayout.Label("Value:");
                         GUILayout.EndHorizontal();
 
-                        
-
-
-                        for (int k = 0, m = priorityModefiers.arraySize; k < m; k++)
+                        for (int k = 0, m = priorityModifiers.arraySize; k < m; k++)
                         {
 
-                            SerializedProperty modefier = priorityModefiers.GetArrayElementAtIndex(k);
-                            SerializedProperty modefierNmae = modefier.FindPropertyRelative("name");
-                            SerializedProperty modefierValue = modefier.FindPropertyRelative("value");
+                            SerializedProperty modifier = priorityModifiers.GetArrayElementAtIndex(k);
+                            SerializedProperty modifierName = modifier.FindPropertyRelative("name");
+                            SerializedProperty modifierValue = modifier.FindPropertyRelative("value");
 
                             // Name, value, delete
                             GUILayout.BeginHorizontal();
-
+							            
+                            modifierName.stringValue = GUILayout.TextField(modifierName.stringValue, GUILayout.MinWidth(75));
                             
-                            modefierNmae.stringValue = GUILayout.TextField(modefierNmae.stringValue, GUILayout.MinWidth(75));
-                            
-                            modefierValue.animationCurveValue = EditorGUILayout.CurveField(modefierValue.animationCurveValue);
+                            modifierValue.animationCurveValue = EditorGUILayout.CurveField(modifierValue.animationCurveValue);
 
-                            if (GUILayout.Button("X", GUILayout.Width(25))) { priorityModefiers.DeleteArrayElementAtIndex(k); k = m; }
+                            if (GUILayout.Button("X", GUILayout.Width(25))) { priorityModifiers.DeleteArrayElementAtIndex(k); k = m; }
 
                             GUILayout.EndHorizontal();
-
                         }
 
-                        if (GUILayout.Button("Add Modefier", EditorStyles.toolbarButton)) priorityModefiers.InsertArrayElementAtIndex(priorityModefiers.arraySize);
+                        if (GUILayout.Button("Add Modifier", EditorStyles.toolbarButton)) priorityModifiers.InsertArrayElementAtIndex(priorityModifiers.arraySize);
 
                         GUILayout.EndVertical();
                     }
-
-
+				
                     GUILayout.Space(5);
 
                     // Show Actions TODO
@@ -132,7 +110,6 @@ public class NPCEditor : Editor
                     {
 
                     }
-
 
                     GUILayout.EndVertical();
 
