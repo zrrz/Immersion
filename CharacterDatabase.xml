@@ -7,11 +7,87 @@
       <lastName>Bobinson</lastName>
       <Stats>
         <Stat>
-          <name>Hello</name>
+          <name>Hunger</name>
           <value>100</value>
         </Stat>
         <Stat>
-          <name>Hi</name>
+          <name>Thirst</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Fatigue</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Happiness</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Safty</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Shelter</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Rest</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Comfort</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Lust</name>
+          <value>0</value>
+        </Stat>
+        <Stat>
+          <name>Health</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Hygiene</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Empathy</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Self Esteem</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Power</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Patience</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Aggressivness</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Religious</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Socialization</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Anxious</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Trust</name>
+          <value>100</value>
+        </Stat>
+        <Stat>
+          <name>Gullibility</name>
           <value>100</value>
         </Stat>
       </Stats>

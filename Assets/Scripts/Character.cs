@@ -64,7 +64,8 @@ public class Character {
 		/// <summary>
 		///  The actions the AI will take to accomidate the need.
 		/// </summary>
-		public List<Action> actions;
+        [XmlArray("Actiosn"), XmlArrayItem("Action")]
+        public List<Action> actions;
 		
 	}
 
@@ -86,6 +87,7 @@ public class Character {
         /// <summary>
         ///  The actions the AI will take to accomidate the need.
         /// </summary>
+        [XmlArray("Actions"), XmlArrayItem("Action")]
         public List<Action> actions;
 
     }
@@ -128,9 +130,6 @@ public class Character {
     public void Initialize()
     {
 
-        //stats["Hunger"].value += 10;
-
-
         stats = new Dictionary<string, Stat>();
         needs = new Dictionary<string, Need>();
         wants = new Dictionary<string, Want>();
@@ -153,5 +152,28 @@ public class Character {
         }
 
 	}
+
+
+    public void CalculateStats()
+    {
+
+        stats["Hunger"].value -= 1;
+        stats["Thirst"].value -= 1;
+        stats["Rest"].value -= 1;
+        stats["Hunger"].value -= 1;
+        stats["Hunger"].value -= 1;
+
+    }
+
+    public void CalculateNeeds()
+    {
+
+    }
+
+    public void CalculateWants()
+    {
+
+    }
+
 
 }

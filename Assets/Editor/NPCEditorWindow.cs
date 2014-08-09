@@ -63,10 +63,12 @@ public class NPCDataBase : EditorWindow {
 
                     SerializedObject serilizedNPCClass = new SerializedObject(serializedObjectClass);
                     NPCEditor.DrawNPC(serilizedNPCClass.FindProperty("value"), serilizedNPCClass);
+
+                    if (GUILayout.Button("Remove", EditorStyles.toolbarButton))
+                        characterDatabase.characters.RemoveAt(i);
+                    
                     EditorGUILayout.EndVertical();
-
-                    //DestroyImmediate(serializedObjectClass);                    
-
+                    
                 }
             }
         }

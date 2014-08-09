@@ -245,7 +245,7 @@ public class NPCEditor : Editor
 
                     GUILayout.Label("Priority: " + wantPriority.intValue);
 
-                    if (GUILayout.Button("X", GUILayout.Width(25), GUILayout.Height(15))) { needs.DeleteArrayElementAtIndex(i); i = n; continue; }
+                    if (GUILayout.Button("X", GUILayout.Width(25), GUILayout.Height(15))) { wants.DeleteArrayElementAtIndex(i); i = n; continue; }
 
                     GUILayout.EndHorizontal();
 

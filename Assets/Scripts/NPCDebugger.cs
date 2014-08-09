@@ -10,6 +10,7 @@ public class NPCDebugger : MonoBehaviour {
 
     public List<NPC> npcList;
     public List<Rect> windows;
+    public List<Vector2> scrollViews;
 
 
 
@@ -42,6 +43,7 @@ public class NPCDebugger : MonoBehaviour {
                 {
                     npcList.Add(npc);
                     windows.Add(new Rect(0, 0, 100, 100));
+                    scrollViews.Add(new Vector2(0, 0));
                 }
             }
         }
@@ -75,6 +77,7 @@ public class NPCDebugger : MonoBehaviour {
 
         GUILayout.Box(character.firstName + " " + character.lastName, GUILayout.Width(300));
 
+        scrollViews[ID] = GUILayout.BeginScrollView(scrollViews[ID], GUILayout.Height(300));
         GUILayout.BeginVertical();
         int rows = 0;
 
@@ -87,7 +90,7 @@ public class NPCDebugger : MonoBehaviour {
         {                 
             rows++;
 
-            GUILayout.Label(character.stats[key].name + ": " + character.stats[key].value);
+            GUILayout.Label(character.stats[key].name + ": " + character.stats[key].value, GUILayout.Width(150));
             if (rows == 2)
             {
                 GUILayout.EndHorizontal();
@@ -105,7 +108,7 @@ public class NPCDebugger : MonoBehaviour {
         foreach (string key in character.needs.Keys)
         {
             rows++;
-            GUILayout.Label(key + " priority: " + character.needs[key].priority);
+            GUILayout.Label(key + " priority: " + character.needs[key].priority, GUILayout.Width(150));
             if (rows == 2)
             {
                 GUILayout.EndHorizontal();
@@ -124,7 +127,7 @@ public class NPCDebugger : MonoBehaviour {
         foreach (string key in character.wants.Keys)
         {
             rows++;
-            GUILayout.Label(key + " priority: " + character.needs[key].priority);
+            GUILayout.Label(key + " priority: " + character.wants[key].priority, GUILayout.Width(150));
             if (rows == 2)
             {
                 GUILayout.EndHorizontal();
@@ -133,7 +136,7 @@ public class NPCDebugger : MonoBehaviour {
             }
         }
         GUILayout.EndHorizontal();
-        
+        GUILayout.EndScrollView();
         
         
         GUILayout.EndVertical();
@@ -141,6 +144,7 @@ public class NPCDebugger : MonoBehaviour {
         {
             npcList.RemoveAt(ID);
             windows.RemoveAt(ID);
+            scrollViews.RemoveAt(ID);
         }
 
 
