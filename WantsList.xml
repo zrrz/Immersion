@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<WantsList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Wants>
+    <string>Hunger</string>
+    <string>Safety</string>
+    <string>Shelter</string>
+    <string>New Want</string>
+  </Wants>
+</WantsList>

@@ -44,19 +44,14 @@ public class ItemXML {
 public class ItemDatabase {
 
 	public ItemDatabase () {
-		//items = new ItemXML[0];
 		items = new List<ItemXML> ();
 	}
 
 	[XmlArray("Items"), XmlArrayItem("ItemXML")]
-//	public ItemXML[] items;
 	public List<ItemXML> items;
 
 	[System.NonSerialized]
 	public static string path = "Items.xml";
-
-//	[System.NonSerialized]
-//	public static ItemDatabase s_instance;
 
 	public void Save() {
 		var serializer = new XmlSerializer(typeof(ItemDatabase));
@@ -68,8 +63,7 @@ public class ItemDatabase {
 	
 	public static ItemDatabase Load() {
 		var serializer = new XmlSerializer(typeof(ItemDatabase));
-		//FIX
-		if(!Directory.Exists(path)) {
+		if(!File.Exists(path)) {
 			Debug.Log("\"" + path + "\" not found. Creating \"" + path + "\"");
 			return new ItemDatabase();
 		} else {
