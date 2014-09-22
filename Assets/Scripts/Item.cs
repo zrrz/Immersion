@@ -26,5 +26,5 @@ public enum Want {
 	Hunger, Safety, Sleep
 }
 public enum SenseEffected {
-	Smell, Sight, Touch, Distance
+	Smell, Sight, Touch, Proximity
 }

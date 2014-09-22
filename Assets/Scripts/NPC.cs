@@ -24,4 +24,13 @@ public class NPC : MonoBehaviour {
     }
 
 
+	void Update() {
+		Look ();
+
+	}
+
+	void Look() {
+
+	}
+
 }

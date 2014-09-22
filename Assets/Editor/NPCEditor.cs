@@ -115,7 +115,7 @@ public class NPCEditor : Editor
                 {
 
                     SerializedProperty needPriority = need.FindPropertyRelative("priority");
-                    SerializedProperty priorityModefiers = need.FindPropertyRelative("priorityModefiers");
+                    SerializedProperty priorityModifiers = need.FindPropertyRelative("priorityModifiers");
                     SerializedProperty actions = need.FindPropertyRelative("actions");
 
 
@@ -141,8 +141,8 @@ public class NPCEditor : Editor
                     GUILayout.Space(10);
 
 
-                    // Show modefiers
-                    if (EditorGUITools.DrawHeader("Priority Modefiers (" + priorityModefiers.arraySize + "):", needName.stringValue + "_priority"))
+                    // Show modifiers
+                    if (EditorGUITools.DrawHeader("Priority Modifiers (" + priorityModifiers.arraySize + "):", needName.stringValue + "_priority"))
                     {
 
                         GUILayout.BeginVertical(EditorStyles.numberField);
@@ -155,28 +155,28 @@ public class NPCEditor : Editor
                         
 
 
-                        for (int k = 0, m = priorityModefiers.arraySize; k < m; k++)
+                        for (int k = 0, m = priorityModifiers.arraySize; k < m; k++)
                         {
 
-                            SerializedProperty modefier = priorityModefiers.GetArrayElementAtIndex(k);
-                            SerializedProperty modefierNmae = modefier.FindPropertyRelative("name");
-                            SerializedProperty modefierValue = modefier.FindPropertyRelative("value");
+                            SerializedProperty modifier = priorityModifiers.GetArrayElementAtIndex(k);
+                            SerializedProperty modifierName = modifier.FindPropertyRelative("name");
+                            SerializedProperty modifierValue = modifier.FindPropertyRelative("value");
 
                             // Name, value, delete
                             GUILayout.BeginHorizontal();
 
                             
-                            modefierNmae.stringValue = GUILayout.TextField(modefierNmae.stringValue, GUILayout.MinWidth(75));
+                            modifierName.stringValue = GUILayout.TextField(modifierName.stringValue, GUILayout.MinWidth(75));
                             
-                            modefierValue.animationCurveValue = EditorGUILayout.CurveField(modefierValue.animationCurveValue);
+                            modifierValue.animationCurveValue = EditorGUILayout.CurveField(modifierValue.animationCurveValue);
 
-                            if (GUILayout.Button("X", GUILayout.Width(25))) { priorityModefiers.DeleteArrayElementAtIndex(k); k = m; }
+                            if (GUILayout.Button("X", GUILayout.Width(25))) { priorityModifiers.DeleteArrayElementAtIndex(k); k = m; }
 
                             GUILayout.EndHorizontal();
 
                         }
 
-                        if (GUILayout.Button("Add Modefier", EditorStyles.toolbarButton)) priorityModefiers.InsertArrayElementAtIndex(priorityModefiers.arraySize);
+                        if (GUILayout.Button("Add Modifier", EditorStyles.toolbarButton)) priorityModifiers.InsertArrayElementAtIndex(priorityModifiers.arraySize);
 
                         GUILayout.EndVertical();
                     }
@@ -226,7 +226,7 @@ public class NPCEditor : Editor
                 {
 
                     SerializedProperty wantPriority = want.FindPropertyRelative("priority");
-                    SerializedProperty priorityModefiers = want.FindPropertyRelative("priorityModefiers");
+                    SerializedProperty priorityModifiers = want.FindPropertyRelative("priorityModifiers");
                     SerializedProperty actions = want.FindPropertyRelative("actions");
 
 
@@ -252,8 +252,8 @@ public class NPCEditor : Editor
                     GUILayout.Space(10);
 
 
-                    // Show modefiers
-                    if (EditorGUITools.DrawHeader("Priority Modefiers (" + priorityModefiers.arraySize + "):", wantName.stringValue + "_priority"))
+                    // Show modifiers
+                    if (EditorGUITools.DrawHeader("Priority Modifiers (" + priorityModifiers.arraySize + "):", wantName.stringValue + "_priority"))
                     {
 
                         GUILayout.BeginVertical(EditorStyles.numberField);
@@ -266,28 +266,28 @@ public class NPCEditor : Editor
 
 
 
-                        for (int k = 0, m = priorityModefiers.arraySize; k < m; k++)
+                        for (int k = 0, m = priorityModifiers.arraySize; k < m; k++)
                         {
 
-                            SerializedProperty modefier = priorityModefiers.GetArrayElementAtIndex(k);
-                            SerializedProperty modefierNmae = modefier.FindPropertyRelative("name");
-                            SerializedProperty modefierValue = modefier.FindPropertyRelative("value");
+                            SerializedProperty modifier = priorityModifiers.GetArrayElementAtIndex(k);
+                            SerializedProperty modifierName = modifier.FindPropertyRelative("name");
+                            SerializedProperty modifierValue = modifier.FindPropertyRelative("value");
 
                             // Name, value, delete
                             GUILayout.BeginHorizontal();
 
 
-                            modefierNmae.stringValue = GUILayout.TextField(modefierNmae.stringValue, GUILayout.MinWidth(75));
+                            modifierName.stringValue = GUILayout.TextField(modifierName.stringValue, GUILayout.MinWidth(75));
 
-                            modefierValue.animationCurveValue = EditorGUILayout.CurveField(modefierValue.animationCurveValue);
+                            modifierValue.animationCurveValue = EditorGUILayout.CurveField(modifierValue.animationCurveValue);
 
-                            if (GUILayout.Button("X", GUILayout.Width(25))) { priorityModefiers.DeleteArrayElementAtIndex(k); k = m; }
+                            if (GUILayout.Button("X", GUILayout.Width(25))) { priorityModifiers.DeleteArrayElementAtIndex(k); k = m; }
 
                             GUILayout.EndHorizontal();
 
                         }
 
-                        if (GUILayout.Button("Add Modefier", EditorStyles.toolbarButton)) priorityModefiers.InsertArrayElementAtIndex(priorityModefiers.arraySize);
+                        if (GUILayout.Button("Add Modifier", EditorStyles.toolbarButton)) priorityModifiers.InsertArrayElementAtIndex(priorityModifiers.arraySize);
 
                         GUILayout.EndVertical();
                     }

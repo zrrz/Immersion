@@ -10,7 +10,7 @@ using System.IO;
 public class EffectorXML {	
 	public EffectorXML () {
 		want = Want.Hunger;
-		senseEffected = SenseEffected.Distance;
+		senseEffected = SenseEffected.Proximity;
 		value = 0f;
 	}
 
