@@ -27,7 +27,7 @@ public class ObjectEditorWindow : EditorWindow {
 					container.items[i].name = EditorGUILayout.TextField(container.items[i].name);
 					EditorGUILayout.BeginVertical();
 					for (int j = 0, n2 = container.items[i].effects.Count; j < n2; j++) {
-						container.items[i].effects[j].senseEffected = (SenseEffected) EditorGUILayout.EnumPopup(container.items[i].effects[j].senseEffected);
+						container.items[i].effects[j].senseEffected = (SenseType) EditorGUILayout.EnumPopup(container.items[i].effects[j].senseEffected);
 //						container.items[i].effects[j].want = EditorGUILayout.Popup(0, WantsList.Load<WantsList>());
 						container.items[i].effects[j].value = EditorGUILayout.FloatField(container.items[i].effects[j].value);
 					}

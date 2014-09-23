@@ -11,18 +11,17 @@ public class Dialog : MonoBehaviour {
 	
 	string message;
 	
-	string firstName;
-	string lastName;
+//	string firstName;
+//	string lastName;
 	
 	public GUISkin skin;
+
+	NPC npc;
 	
 	void Start () {
+		npc = GetComponent<NPC> ();
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		message = "Hey, " + DialogBank.IceBreaker(WeatherManager.instance.weather);
-		firstName = NameBank.RandomName();
-		do {
-			lastName = NameBank.RandomName();
-		}while(firstName == lastName);
 	}
 	
 	void Update () {
@@ -39,7 +38,7 @@ public class Dialog : MonoBehaviour {
 		if(playerNear) {
 			GUILayout.BeginArea(new Rect(Screen.width/4.0f, Screen.height*.75f, Screen.width/2.0f, Screen.height/4.0f),GUI.skin.window );
 			
-			GUILayout.Label(firstName + " " + lastName, skin.customStyles[0]);
+			GUILayout.Label(npc.firstName + " " + npc.lastName, skin.customStyles[0]);
 			GUILayout.Label(message, skin.label);
 			GUILayout.EndArea();
 		}

@@ -12,7 +12,7 @@ public class NameBank : MonoBehaviour {
 
 	List<string> m_names = new List<string>();
 	
-	void Start () {
+	void Awake () {
 		s_instance = this;
 		StreamReader sr = new StreamReader(Application.dataPath + "/" + fileName);
 		string contents = sr.ReadToEnd();

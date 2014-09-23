@@ -9,15 +9,15 @@ using System.IO;
 [XmlType("Effect")]
 public class EffectorXML {	
 	public EffectorXML () {
-		want = new Want();
-		senseEffected = SenseEffected.Distance;
+//		want = new Want();
+//		senseEffected = SenseEffected.Distance;
 		value = 0f;
 	}
 
 	[XmlElement("Want")]
-	public Want want;
+	public WantType want;
 	[XmlElement("Sense")]
-	public SenseEffected senseEffected;
+	public SenseType senseEffected;
 	[XmlElement("Value")]
 	public float value;
 }

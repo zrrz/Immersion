@@ -71,9 +71,9 @@ public class NPCDebugger : MonoBehaviour {
     void DrawNPCWindow(int ID)
     {
 
-        NPC npc = npcList[ID];
-        Character character = npc.character;
-
+//        NPC npc = npcList[ID];
+//        Character character = npc.character;
+		Character character = null;
 
         GUILayout.Box(character.firstName + " " + character.lastName, GUILayout.Width(300));
 

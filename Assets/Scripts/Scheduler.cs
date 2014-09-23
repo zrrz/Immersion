@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Scheduler : MonoBehaviour {
 
 	Queue<Task> tasks;
+	Queue<Task> repeatingTasksToAdd;
 
 	static Scheduler s_instance;
 
@@ -12,7 +13,7 @@ public class Scheduler : MonoBehaviour {
 
 	Dictionary<TaskDelegate, float> taskTimes;
 
-	const float MAX_FRAME_TIME = 1f/120f;
+	const float MAX_FRAME_TIME = 1f/60f;
 
 	public bool run = false;
 
@@ -30,15 +31,17 @@ public class Scheduler : MonoBehaviour {
 		instance.tasks.Enqueue(new Task(task, repeating));
 	}
 	
-	void Start () {
+	void Awake () {
 		s_instance = this;
 		tasks = new Queue<Task>();
+		repeatingTasksToAdd = new Queue<Task> ();
 		taskTimes = new Dictionary<TaskDelegate, float>();
-
-		tasks.Enqueue(new Task(Dance, true));
 	}
 	
 	void Update () {
+		while (repeatingTasksToAdd.Count > 0)
+			tasks.Enqueue (repeatingTasksToAdd.Dequeue ());
+
 		if(!run)
 			return;
 		if(tasks.Count > 0) {
@@ -56,7 +59,8 @@ public class Scheduler : MonoBehaviour {
 						break;
 					}
 					if(taskTimes.ContainsKey(tasks.Peek().myDelegate)) {
-						if(curTasktime + taskTimes[tasks.Peek().myDelegate] < MAX_FRAME_TIME) {
+						float addTime = taskTimes[tasks.Peek().myDelegate];
+						if(curTasktime + addTime < MAX_FRAME_TIME) {
 							task = tasks.Dequeue();
 							DoTask(task);
 							tasksDone++;			//Debug
@@ -67,31 +71,29 @@ public class Scheduler : MonoBehaviour {
 						} else {
 							moreTasks = false;
 						}
+					} else {
+						moreTasks = false;
 					}
 				}
 			} else {
-				float curTime = Time.realtimeSinceStartup;
-				DoTask(task);
+				TimeTask(task);
 				tasksDone++;						//Debug
-				taskTimes.Add(task.myDelegate, Time.realtimeSinceStartup - curTime);
-				print ("Task " + task.myDelegate.ToString() + " takes " + (Time.realtimeSinceStartup - curTime));
 			}
 			print ("Tasks done: " + tasksDone);		//Debug
 		}
 	}
 
-	void Dance() {
-		for(int i = 0; i < 1000; i++) {
-			for(int j = 0; j < 100; j++) {
-			
-			}
-		}
+	void TimeTask(Task task) {
+		float curTime = Time.realtimeSinceStartup;
+		DoTask(task);			
+		taskTimes.Add(task.myDelegate, Time.realtimeSinceStartup - curTime);
+		print ("Task " + task.myDelegate.Method.Name + " takes " + (Time.realtimeSinceStartup - curTime));
 	}
 
 	void DoTask(Task task) {
 		task.myDelegate();
 		if(task.repeating)
-			tasks.Enqueue(task);
+			repeatingTasksToAdd.Enqueue(task);
 	}
 	
 	public static Scheduler instance {
