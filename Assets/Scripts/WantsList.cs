@@ -8,6 +8,7 @@ using System.IO;
 [XmlRoot("WantsList")]
 public class WantsList : XMLBase {
 
+
 	override protected void Init() {
 		wants = new List<string>();
 		base.Init ();

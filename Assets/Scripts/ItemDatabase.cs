@@ -9,7 +9,7 @@ using System.IO;
 [XmlType("Effect")]
 public class EffectorXML {	
 	public EffectorXML () {
-		want = Want.Hunger;
+		want = new Want();
 		senseEffected = SenseEffected.Distance;
 		value = 0f;
 	}

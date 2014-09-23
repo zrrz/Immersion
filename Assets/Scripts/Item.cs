@@ -18,13 +18,20 @@ public class Item : MonoBehaviour{
 public class Effector {
 	
 	public Want want;
+//	public string want;
 	public SenseEffected senseEffected;
 	public int value;
 }
 
-public enum Want {
-	Hunger, Safety, Sleep
+[System.Serializable]
+public class Want {
+	public string name;
 }
+
+//public enum Want {
+//	Hunger, Safety, Sleep
+//}
+
 public enum SenseEffected {
 	Smell, Sight, Touch, Distance
 }
