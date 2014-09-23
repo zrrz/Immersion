@@ -33,5 +33,5 @@ public class Want {
 //}
 
 public enum SenseEffected {
-	Smell, Sight, Touch, Distance
+	Smell, Sight, Touch, Proximity
 }
