@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Item : MonoBehaviour{
 	
-	public Effector[] effector;
+	public Effector[] effectors;
 
 	void Start () {
 		ItemManager.items.Add (this);
